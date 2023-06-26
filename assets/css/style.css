@@ -1,0 +1,27 @@
+#work-examples{
+    background-color: gray;
+}
+table{
+    width: 100vw;
+    padding: 20px;
+    flex: fixed;
+    flex-basis: 100px;
+    flex-grow: 1;
+    flex-flow: wrap;
+    align-items: baseline;
+    flex-wrap: wrap;
+    background-color: lightgray;
+}
+
+.work-example{
+    height: 100px;
+    width: 100px;
+    background-color: white;
+}
+
+.example-header{
+
+}
+.example-footer{
+
+}
