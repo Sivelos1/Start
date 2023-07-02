@@ -1,27 +1,248 @@
-#work-examples{
-    background-color: gray;
+:root{
+    font-family:'Courier New', Courier, monospace;
+    --header-height: 75px;
+    --portfolio-max-height: 500px;
+    --portfolio-item-width: 200px;
+    --portfolio-item-height: 350px;
+    --icon-radius: 20px;
 }
-table{
-    width: 100vw;
-    padding: 20px;
-    flex: fixed;
-    flex-basis: 100px;
-    flex-grow: 1;
-    flex-flow: wrap;
-    align-items: baseline;
+
+h1{
+    font-size: 200%;
+}
+h2{
+    font-size: 190%;
+}
+h3{
+    font-size: 180%;
+}
+h4{
+    font-size: 170%;
+}
+h5{
+    font-size: 160%;
+}
+h6{
+    font-size: 150%;
+}
+
+/*================ Top Bar ================*/
+header{
+    display:inline-flex;
+    width: 100%;
+    background-color: lightseagreen;
+    height: var(--header-height);
+    top: 0px;
+    left: 0px;
+    padding: 1% 2% 1% 2%;
+    flex: 1 1 1%;
+    position: fixed;
+    align-items: center;
+    justify-content:space-between;
+}
+
+header ul{
+    display:inline-flex;
+}
+header ul li {
+    width:auto;
+    display: block;
+    padding: 1%;
+    color: white;
+    font-weight: bold;
+    margin: 1%;
+}    
+
+footer{
+    display:grid;
+    width: 100%;
+    background-color: black;
+    height: var(--header-height);
+    padding: 1% 2% 1% 2%;
+    flex: 1 1 1%;
+    left: 0px;
+    bottom: 0px;
+    color:white;
+    position: fixed;
+    align-items: center;
+    justify-content:flex-end;
+}
+
+footer ul{
+    display:inline-flex;
+    min-width: fit-content;
+    flex: 1 1 var(--icon-radius);
+}
+
+footer ul li {
+    height:fit-content;
+    width: fit-content;
+    padding: 0% 10px 0% 0%;
+}
+
+/*================ Hamburger Menu ================*/
+
+#hamburgerMenu{
+    height: 50px;
+    width: 50px;
+    display:none;
     flex-wrap: wrap;
+    font-size: 500%;
+    font-weight: lighter;
+    color:lightseagreen;
+    border-radius: 10%;
+    flex: 0 0 50px;
+    justify-content: center;
+    align-content:center;
+    background-color: aquamarine;
+}
+
+#hamburgerMenu:hover{
+    background-color: white;
+    color: aquamarine
+}
+
+@media only screen and (max-width: 992px){
+    
+    #hamburgerMenu{
+        display:flex;
+    }
+    header ul {
+        display: none;
+        position:fixed;
+        align-items: top;
+        text-align: center;
+        background-color: lightseagreen;
+        overflow-y: auto;
+        padding: 0.5%;
+        flex-wrap: wrap;
+        right: 0%;
+        top: var(--header-height);
+        font-size: 150%;
+    }
+    header ul li{
+        border-radius: 5% 0% 5% 0%;
+        width:100%;
+    }
+    header #hamburgerMenu:hover + ul, header ul:hover{
+        display:flex;
+        
+        
+    }   
+}
+
+/*================ Top Bar ================*/
+
+
+body{
+    padding: 1%;
     background-color: lightgray;
 }
 
-.work-example{
-    height: 100px;
-    width: 100px;
+section{
     background-color: white;
+    padding: 1%;
+    margin: 0% 0% 1% 0%;
 }
 
-.example-header{
-
+section h1 {
+    margin: 1% 0% 1% 0%;
 }
-.example-footer{
+.emptySpace{
+    height: calc(var(--header-height) + calc(var(--header-height) * 0.1));
+}
+
+a{
+    color:black;
+    text-decoration: none;
+}
+
+/*================ Portfolio ================*/
+
+#portfolio{
+    display:inline-flex;
+    flex: 1 1 100%;
+    width: 100%;
+}
+
+.portfolio-holder{
+    padding: 1%;
+    background-color: lightgray;
+    margin: 0% 0.5% 0% 0.5%;
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    display: inline-flex;
+    justify-content: center;
+    overflow-x: clip;
+    overflow-y: scroll;
+    max-height: var(--portfolio-max-height);
+}
+
+.portfolio-holder ul li{
+    background-color: white;
+    display: inline-flex;
+    flex: 1 1 100%;
+    margin: 5px;
+    border-radius: 5%;
+    width: var(--portfolio-item-width);
+    height: fit-content;
+    max-height: var(--portfolio-item-height);
+    max-width:var(--portfolio-item-width);
+    justify-content:left;
+    align-items: self-end;
+    overflow: hidden;
+}
+.portfolio-holder ul li a  {
+    width: 100%;
+    max-width: 100%;
+    height: fit-content;
+}
+
+.portfolio-holder ul li a picture {
+    display:flex;
+    overflow: hidden;
+    justify-content: center;
+    width: 100%;
+    max-width: var(--portfolio-item-width);
+    max-height: var(--portfolio-item-height);
+    aspect-ratio: 1;
+}
+.portfolio-holder ul li a div {
+    padding: 5%;
+    align-items: flex-end;
+}
+.portfolio-holder ul li:first-of-type{
+    display:flex;
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+    height:fit-content;
+    aspect-ratio:calc(16/9);
+}
+.portfolio-holder ul li:first-of-type a picture{
+    width: 100%;
+    max-width: 100%;
+    display: inline-grid;
+    max-height: 75%;
+}
+
+.growOnHover:hover{
+    transition: all .2s ease-in-out;
+    &:hover{
+        transform:scale(101%);
+    }
+}
+
+.changeColorOnHover:hover{
+    transition: all .2s ease-in-out;
+    &:hover{
+        background-color:aquamarine;
+    }
+}
+.icon img{
+    width: calc(var(--icon-radius)*2);
+    height: calc(var(--icon-radius)*2);
+    overflow: hidden;
+    border-radius: 100%;
 
 }
