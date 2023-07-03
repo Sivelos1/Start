@@ -2,9 +2,22 @@
     font-family:'Courier New', Courier, monospace;
     --header-height: 75px;
     --portfolio-max-height: 500px;
-    --portfolio-item-width: 150px;
-    --portfolio-item-height: 300px;
+    --portfolio-item-width: 125px;
+    --portfolio-item-height: 250px;
     --icon-radius: 20px;
+    /*==== Color Center ====*/
+    --header-color: lightseagreen;
+    --header-color-2: rgb(44, 114, 118);
+    --section-color: white;
+    --inset-color: lightgray;
+    --highlight-color: aquamarine;
+    --button-color: aquamarine;
+    --button-text-color: lightseagreen;
+    --button-highlight-color: white;
+    --text-color: black;
+    --footer-color:black;
+    --footer-text-color:white;
+
 }
 
 h1{
@@ -30,7 +43,7 @@ h6{
 header{
     display:inline-flex;
     width: 100%;
-    background-color: lightseagreen;
+    background: linear-gradient(90deg, var(--header-color) 0%, var(--header-color-2) 100%);
     height: var(--header-height);
     top: 0px;
     left: 0px;
@@ -48,23 +61,35 @@ header ul li {
     width:auto;
     display: block;
     padding: 1%;
-    color: white;
+    color: var(--text-color);
     font-weight: bold;
     margin: 1%;
 }    
+header h1{
+    align-items: center;
+    display:flex;
+    flex: 1 1 fit-content;
+    padding: 1%;
+    max-height: var(--header-height);
+}
+@media only screen and (max-width: 500px){
+    header h1{
+        font-size: 150%;
+    }
+}
 
 /*================ Bottom Bar ================*/
 
 footer{
     display:flex;
     width: 100%;
-    background-color: black;
+    background-color: var(--footer-color);
     height: var(--header-height);
     padding: 1% 2% 1% 2%;
     flex: 1 1 1%;
     left: 0px;
     bottom: 0px;
-    color:white;
+    color:var(--footer-text-color);
     position: fixed;
     align-items: center;
     justify-content:flex-end;
@@ -80,7 +105,19 @@ footer ul{
 footer ul li {
     height:fit-content;
     width: fit-content;
+    max-width: calc(var(--icon-radius)*2.5);
     padding: 0% 10px 0% 0%;
+}
+
+@media only screen and (max-width: 300px){
+    footer{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+    
+    footer ul{
+        justify-content: center;
+    }
 }
 
 /*================ Hamburger Menu ================*/
@@ -92,17 +129,17 @@ footer ul li {
     flex-wrap: wrap;
     font-size: 500%;
     font-weight: lighter;
-    color:lightseagreen;
+    color:var(--button-text-color);
     border-radius: 10%;
     flex: 0 0 50px;
     justify-content: center;
     align-content:center;
-    background-color: aquamarine;
+    background-color: var(--button-color);
 }
 
 #hamburgerMenu:hover{
-    background-color: white;
-    color: aquamarine
+    background-color: var(--button-highlight-color);
+    color: var(--button-color)
 }
 
 @media only screen and (max-width: 992px){
@@ -115,7 +152,7 @@ footer ul li {
         position:fixed;
         align-items: top;
         text-align: center;
-        background-color: lightseagreen;
+        background-color: var(--header-color);
         overflow-y: auto;
         padding: 0.5%;
         flex-wrap: wrap;
@@ -134,16 +171,16 @@ footer ul li {
     }   
 }
 
-/*================ Top Bar ================*/
+/*================ Generic ================*/
 
 
 body{
     padding: 1%;
-    background-color: lightgray;
+    background: linear-gradient(180deg, skyblue 0%, cadetblue 100%);
 }
 #main{
     display: flex;
-    background-color: white;
+    background-color: var(--section-color);
     border-radius: 1%;
     margin-top: var(--header-height);
     margin-bottom: var(--header-height);
@@ -153,8 +190,54 @@ body{
 aside{
     overflow-y:auto;
     padding: 1%;
+    width: 100%;
+}
+section{
+    padding: 1%;
+    margin: 0% 0% 1% 0%;
 }
 
+section h1 {
+    margin: 1% 0% 1% 0%;
+    background: linear-gradient(90deg, var(--header-color) 0%, var(--section-color) 50%);
+    padding: 1%;
+    border-radius: 1%;
+}
+.emptySpace{
+    display:block;
+    height: calc(var(--header-height) + calc(var(--header-height) * 0.1));
+}
+
+a{
+    color:var(--text-color);
+    text-decoration: none;
+}
+
+.growOnHover:hover{
+    transition: all .2s ease-in-out;
+    &:hover{
+        transform:scale(101%);
+    }
+}
+
+.changeColorOnHover:hover{
+    transition: all .2s ease-in-out;
+    &:hover{
+        background-color:var(--highlight-color);
+    }
+}
+.icon img{
+    width: calc(var(--icon-radius)*2);
+    height: calc(var(--icon-radius)*2);
+    max-height: 10vw;
+    max-width: 10vw;
+    border-radius: 100%;
+}
+
+#picOfMe img{
+    width: calc(var(--header-height)*0.9);
+    height: calc(var(--header-height)*0.9);
+}
 @media only screen and (max-width: 992px){
     #main{
         display: block;
@@ -165,22 +248,14 @@ aside{
     }
 }
 
-section{
-    padding: 1%;
-    margin: 0% 0% 1% 0%;
-}
-
-section h1 {
-    margin: 1% 0% 1% 0%;
-}
-.emptySpace{
-    display:block;
-    height: calc(var(--header-height) + calc(var(--header-height) * 0.1));
-}
-
-a{
-    color:black;
-    text-decoration: none;
+@media only screen and (max-width: 300px){
+    header h1{
+        display:none;
+    }
+    #picOfMe img{
+        max-height: fit-content;
+        max-width: fit-content;
+    }
 }
 
 /*================ Portfolio ================*/
@@ -193,7 +268,7 @@ a{
 
 .portfolio-holder{
     padding: 1%;
-    background-color: lightgray;
+    background-color: var(--inset-color);
     margin: 0% 0.5% 0% 0.5%;
     flex: 1 1 100%;
     flex-wrap: wrap;
@@ -201,12 +276,11 @@ a{
     justify-content: center;
     overflow-x: clip;
     overflow-y: scroll;
-    max-height: var(--portfolio-max-height);
+    min-height: 100%;
     border-radius: 1%;
 }
-
 .portfolio-holder ul li{
-    background-color: white;
+    background-color: var(--section-color);
     display: inline-flex;
     flex: 1 1 100%;
     margin: 5px;
@@ -257,23 +331,14 @@ a{
     max-height: 75%;
 }
 
-.growOnHover:hover{
-    transition: all .2s ease-in-out;
-    &:hover{
-        transform:scale(101%);
+@media only screen and (max-width: 550px){
+    .portfolio-holder{
+        max-height: var(--portfolio-max-height);
+    }
+}
+@media only screen and (max-width: 300px){
+    .portfolio-holder{
+        max-height: calc(var(--portfolio-max-height)*0.75);
     }
 }
 
-.changeColorOnHover:hover{
-    transition: all .2s ease-in-out;
-    &:hover{
-        background-color:aquamarine;
-    }
-}
-.icon img{
-    width: calc(var(--icon-radius)*2);
-    height: calc(var(--icon-radius)*2);
-    overflow: hidden;
-    border-radius: 100%;
-
-}
