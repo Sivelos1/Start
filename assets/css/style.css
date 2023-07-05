@@ -59,16 +59,28 @@ header{
 }
 
 header ul{
-    display:inline-flex;
+    display: none;
+    position:fixed;
+    align-items: top;
+    text-align: center;
+    background-color: var(--header-color-2);
+    overflow-y: hidden;
+    padding: 0.5%;
+    flex-wrap: wrap;
+    right: 0%;
+    top: var(--header-height);
+    font-size: 150%;
 }
+
 header ul li {
     min-width:auto;
-    width:100px;
     display: block;
     padding: 1%;
     color: var(--text-color);
     font-weight: bold;
     margin: 1%;
+    border-radius: 5% 0% 5% 0%;
+    width:100%;
     border-radius: 5%;
 }    
 header h1{
@@ -157,36 +169,16 @@ footer ul li {
     }
 }
 
-@media only screen and (max-width: 9999992px){
-    
-    #hamburgerMenu{
-        display:flex;
-    }
-    header ul {
-        display: none;
-        position:fixed;
-        align-items: top;
-        text-align: center;
-        background-color: var(--header-color-2);
-        overflow-y: hidden;
-        padding: 0.5%;
-        flex-wrap: wrap;
-        right: 0%;
-        top: var(--header-height);
-        font-size: 150%;
-    }
-    header ul li{
-        border-radius: 5% 0% 5% 0%;
-        width:100%;
-    }
-    header #hamburgerMenu:hover + ul, header ul:hover{
-        display:flex;
-        animation-name: extendHamburgerMenu;
-        animation-duration: 1.5s;
-        animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-        
-    }   
+#hamburgerMenu{
+    display:flex;
 }
+header #hamburgerMenu:hover + ul, header ul:hover{
+    display:flex;
+    animation-name: extendHamburgerMenu;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    
+}   
 
 /*================ Generic ================*/
 
