@@ -2,21 +2,25 @@
     font-family:'Courier New', Courier, monospace;
     --header-height: 75px;
     --portfolio-max-height: 500px;
-    --portfolio-item-width: 125px;
+    --portfolio-item-width: 155px;
     --portfolio-item-height: 250px;
     --icon-radius: 20px;
+    --list-indentation: 20px;
+    --hamburger-menu-list-height: 250px;
     /*==== Color Center ====*/
-    --header-color: lightseagreen;
-    --header-color-2: rgb(44, 114, 118);
+    --header-color: rgb(32, 178, 129);
+    --header-color-2: rgb(11, 136, 128);
     --section-color: white;
     --inset-color: lightgray;
     --highlight-color: aquamarine;
-    --button-color: aquamarine;
-    --button-text-color: lightseagreen;
+    --button-color: rgb(127, 255, 208);
+    --button-text-color: rgb(32, 178, 132);
     --button-highlight-color: white;
     --text-color: black;
     --footer-color:black;
     --footer-text-color:white;
+    --bg-color-1: rgb(185, 223, 225);
+    --bg-color-2: rgb(79, 101, 101);
 
 }
 
@@ -58,12 +62,14 @@ header ul{
     display:inline-flex;
 }
 header ul li {
-    width:auto;
+    min-width:auto;
+    width:100px;
     display: block;
     padding: 1%;
     color: var(--text-color);
     font-weight: bold;
     margin: 1%;
+    border-radius: 5%;
 }    
 header h1{
     align-items: center;
@@ -142,7 +148,16 @@ footer ul li {
     color: var(--button-color)
 }
 
-@media only screen and (max-width: 992px){
+@keyframes extendHamburgerMenu {
+    from{
+        max-height:0px;
+    }
+    to{
+        max-height:var(--hamburger-menu-list-height);
+    }
+}
+
+@media only screen and (max-width: 9992px){
     
     #hamburgerMenu{
         display:flex;
@@ -152,8 +167,8 @@ footer ul li {
         position:fixed;
         align-items: top;
         text-align: center;
-        background-color: var(--header-color);
-        overflow-y: auto;
+        background-color: var(--header-color-2);
+        overflow-y: hidden;
         padding: 0.5%;
         flex-wrap: wrap;
         right: 0%;
@@ -166,7 +181,9 @@ footer ul li {
     }
     header #hamburgerMenu:hover + ul, header ul:hover{
         display:flex;
-        
+        animation-name: extendHamburgerMenu;
+        animation-duration: 1.5s;
+        animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
         
     }   
 }
@@ -176,7 +193,7 @@ footer ul li {
 
 body{
     padding: 1%;
-    background: linear-gradient(180deg, skyblue 0%, cadetblue 100%);
+    background: linear-gradient(180deg, var(--bg-color-1) 0%, var(--bg-color-2) 100%);
 }
 #main{
     display: flex;
@@ -185,6 +202,14 @@ body{
     margin-top: var(--header-height);
     margin-bottom: var(--header-height);
     height: calc(100% - (2* var(--header-height)));
+}
+
+body div aside section ul{
+    list-style-type:circle;
+    margin: 0% 0% 0% var(--list-indentation);
+}
+body div aside section ul li{
+    padding: 0% 0% 2% 0%;
 }
 
 aside{
@@ -213,6 +238,19 @@ a{
     text-decoration: none;
 }
 
+.actual-link{
+    color: blue;
+    text-decoration: underline;
+    
+}
+.actual-link:hover{
+    color: blue;
+}
+.actual-link:active{
+    color:purple;
+    padding-top:2px;
+}
+
 .growOnHover:hover{
     transition: all .2s ease-in-out;
     &:hover{
@@ -224,6 +262,13 @@ a{
     transition: all .2s ease-in-out;
     &:hover{
         background-color:var(--highlight-color);
+    }
+}
+
+.extendOnHover:hover{
+    transition: all .2s ease-in-out;
+    &:hover{
+        max-height: fit-content;
     }
 }
 .icon img{
@@ -285,6 +330,7 @@ a{
     flex: 1 1 100%;
     margin: 5px;
     border-radius: 5%;
+    flex-wrap:wrap;
     width: var(--portfolio-item-width);
     height: fit-content;
     max-height: var(--portfolio-item-height);
@@ -308,9 +354,10 @@ a{
     max-height: var(--portfolio-item-height);
     aspect-ratio: 1;
 }
-.portfolio-holder ul li a div {
+.portfolio-holder ul li div {
     padding: 5%;
     align-items: flex-end;
+    flex-wrap: wrap;
     display: inherit;
 }
 .portfolio-holder ul li a div h2 {
@@ -321,14 +368,25 @@ a{
     flex: 1 1 100%;
     width: 100%;
     max-width: 100%;
-    height:fit-content;
+    height:var(--portfolio-item-height);
     aspect-ratio:calc(16/9);
+    flex-wrap: nowrap;
 }
 .portfolio-holder ul li:first-of-type a picture{
     width: 100%;
     max-width: 100%;
     display: inline-grid;
     max-height: 75%;
+}
+
+@keyframes extendOnHover {
+    from{
+        max-height:inherit;
+    }
+    to{
+        max-height:fit-content;
+    }
+    
 }
 
 @media only screen and (max-width: 550px){
