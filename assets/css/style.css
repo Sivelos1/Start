@@ -157,7 +157,7 @@ footer ul li {
     }
 }
 
-@media only screen and (max-width: 9992px){
+@media only screen and (max-width: 9999992px){
     
     #hamburgerMenu{
         display:flex;
