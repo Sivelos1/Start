@@ -196,6 +196,13 @@ body{
     height: calc(100% - (2* var(--header-height)));
 }
 
+.smaller {
+    justify-content: space-between;
+    height: 75%;
+    width: 75%;
+    font-size: 75%;
+}
+
 body div aside section ul{
     list-style-type:circle;
     margin: 0% 0% 0% var(--list-indentation);
@@ -320,7 +327,7 @@ a{
     background-color: var(--section-color);
     display: inline-flex;
     flex: 1 1 100%;
-    margin: 5px;
+    margin: 4px;
     border-radius: 5%;
     flex-wrap:wrap;
     width: var(--portfolio-item-width);
@@ -376,7 +383,7 @@ a{
         max-height:inherit;
     }
     to{
-        max-height:fit-content;
+        max-height:max-content;
     }
     
 }
